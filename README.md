@@ -1,4 +1,4 @@
-Note (how to use this app): 
+How to Setup App for Use: 
 -
 - You need to get your own Flickr API for the app 
 - Steps:
