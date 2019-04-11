@@ -6,7 +6,7 @@ class SearchBar extends Component {
   state = {
     searchText: ''
   }
-  // thanks to https://tylermcginnis.com/react-router-programmatically-navigate/ for reference on the search funtionality
+  //reference: https://tylermcginnis.com/react-router-programmatically-navigate/ 
   
   onSearchChange = e => {
     this.setState({ searchText: e.target.value });

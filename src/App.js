@@ -9,6 +9,8 @@ import Header from './Components/Header';
 import Nav from './Components/Nav';
 import SearchBar from './Components/SearchBar';
 import SearchResults from './Components/SearchResults';
+import NoResults from './Components/NoResults';
+
 
 const api = apiKey;
 
@@ -21,7 +23,7 @@ class App extends Component {
       loading: true
     };
   } 
-
+// Helps load the JSON from the API
   componentDidMount() {
     this.defaultSearch();
     this.kieselSearch();
@@ -118,6 +120,7 @@ class App extends Component {
                   () => (this.state.loading) 
                     ? <p> Loading...</p> 
                     : <SearchResults data={this.state.guitarPics} />} />
+                      <Route component={NoResults} />
             </Switch>
         </div> 
       </BrowserRouter>
