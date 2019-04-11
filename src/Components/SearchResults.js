@@ -5,8 +5,8 @@ import NoResults from './NoResults';
 const SearchResults = (props) => {
     const results = props.data;
     let pics;
-    
-        if (results) {
+
+        if (results.length > 0) {
             console.log(results.length);
             pics = results.map(pic => 
                 <Gallery 
@@ -22,7 +22,7 @@ const SearchResults = (props) => {
 
     return(
         <div className="photo-container">
-            <h2>Search Results</h2>
+         <h2>Search Results</h2>
                 <ul>
                     {pics}
                     {/* <NoResults /> */}
