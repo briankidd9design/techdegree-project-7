@@ -4,6 +4,9 @@ How to Setup App for Use:
 - Steps:
     1. Create a file named '.config.js' and save under src folder
     2. in the '.config.js', copy and paste the following code, and substitute with your own flickr API
+    3. enter into terminal: npm install
+    4. enter into terminal: npm run build
+    5. enter into the terminal: serve -s build
   ```
   const apiKey='You flickr API';
   export default apiKey;
