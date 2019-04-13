@@ -3,12 +3,14 @@ import Gallery from './Gallery';
 import NoResults from './NoResults';
 
 const SearchResults = (props) => {
+
     const results = props.data;
-    let pics;
+
+    let searchPics;
 
         if (results.length > 0) {
-            console.log(results.length);
-            pics = results.map(pic => 
+            
+           searchPics = results.map(pic => 
                 <Gallery 
                     url={`https://farm${pic.farm}.staticflickr.com/${pic.server}/${pic.id}_${pic.secret}.jpg`}
                     key={pic.id} 
@@ -16,16 +18,14 @@ const SearchResults = (props) => {
                     /> );
                     
         } else {
-            pics = <NoResults />
+            searchPics = <NoResults />
         }
-
-
+       
     return(
         <div className="photo-container">
          <h2>Search Results</h2>
                 <ul>
-                    {pics}
-                    {/* <NoResults /> */}
+                    {searchPics}
                 </ul>
         </div>
         );

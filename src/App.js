@@ -9,6 +9,9 @@ import Header from './Components/Header';
 import Nav from './Components/Nav';
 import SearchBar from './Components/SearchBar';
 import SearchResults from './Components/SearchResults';
+import KieselSearch from './Components/KieselSearch';
+import FenderSearch from './Components/FenderSearch';
+import GibsonSearch from './Components/GibsonSearch';
 import NoResults from './Components/NoResults';
 
 
@@ -19,7 +22,9 @@ class App extends Component {
   constructor() {
     super();
     this.state = {
-      pics: [],
+      searchPics: [],
+      kieselPics: [],
+      fenderPics: [],
       loading: true
     };
   } 
@@ -36,7 +41,7 @@ class App extends Component {
       .then(response => 
         {
         this.setState({
-          guitarPics: response.data.photos.photo,
+          searchPics: response.data.photos.photo,
           loading: false
         });
       })
@@ -85,9 +90,10 @@ class App extends Component {
       .catch(function (error) {
         console.log('Error fetching and parsing data', error);
       })
-  }
+ }
 
   render() {
+ 
     return (
       <BrowserRouter>
         <div className="container">
@@ -99,33 +105,36 @@ class App extends Component {
               render = { 
                 () => (this.state.loading) 
                   ? <p> Loading...</p> 
-                  : <SearchResults data={this.state.guitarPics} />} />
+                  : <SearchResults data={this.state.searchPics} />} />
             <Route exact path = '/kieselguitars'
               render = {
                 () => (this.state.loading) 
                   ? <p> Loading...</p> 
-                  : <SearchResults data={this.state.kieselPics} />} /> 
+                  : <KieselSearch data={this.state.kieselPics} />} /> 
               <Route exact path = '/fenderguitars'
                 render = {
                   () => (this.state.loading) 
                     ? <p> Loading...</p> 
-                    : <SearchResults data={this.state.fenderPics} />} />
+                    : <FenderSearch data={this.state.fenderPics} />} />
               <Route exact path = '/gibsonguitars'
                 render = {
                   () => (this.state.loading) 
                     ? <p> Loading...</p> 
-                    : <SearchResults data={this.state.gibsonPics} />} />
+                    : <GibsonSearch data={this.state.gibsonPics} />} />
               <Route path = '/search'
                 render = {
                   () => (this.state.loading) 
                     ? <p> Loading...</p> 
-                    : <SearchResults data={this.state.guitarPics} />} />
-                      <Route component={NoResults} />
+                    : <SearchResults data={this.state.searchPics} />} />
+                    <Route component={NoResults} />
             </Switch>
         </div> 
+        
       </BrowserRouter>
     );
+  
   }
+              
 }
 
 export default App;
