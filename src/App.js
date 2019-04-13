@@ -25,6 +25,7 @@ class App extends Component {
       searchPics: [],
       kieselPics: [],
       fenderPics: [],
+      gibsonPics: [],
       loading: true
     };
   } 
