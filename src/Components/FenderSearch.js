@@ -26,7 +26,6 @@ const FenderSearch = (props) => {
              <h2>Search Results</h2>
                     <ul>
                         {fenderPics}
-                        {/* <NoResults /> */}
                     </ul>
             </div>
             );

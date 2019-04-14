@@ -26,7 +26,6 @@ const KieselSearch = (props) => {
              <h2>Search Results</h2>
                     <ul>
                         {kieselPics}
-                        {/* <NoResults /> */}
                     </ul>
             </div>
             );

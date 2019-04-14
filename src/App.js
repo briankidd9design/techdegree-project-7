@@ -4,7 +4,7 @@ import apiKey from './config';
 import axios from 'axios';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 
-//Components
+//Components needed to run application
 import Header from './Components/Header';
 import Nav from './Components/Nav';
 import SearchBar from './Components/SearchBar';
@@ -14,6 +14,7 @@ import FenderSearch from './Components/FenderSearch';
 import GibsonSearch from './Components/GibsonSearch';
 import NotFound from './Components/NotFound';
 
+//api key in the config file used to help get api data from the flickr api
 const api = apiKey;
 
 class App extends Component {
@@ -30,15 +31,19 @@ class App extends Component {
   } 
 
 // Helps load the JSON from the API
+//Using didMount makes it clear that data won’t be loaded until after the initial render. 
+//This reminds you to set up initial state properly, so you don’t end up with undefined state 
+//that causes errors.
+//Reference: https://daveceddia.com/where-fetch-data-componentwillmount-vs-componentdidmount/
   componentDidMount() {
     this.defaultSearch();
     this.kieselSearch();
     this.fenderSearch();
     this.gibsonSearch();
   }
-  
+  //different search scenarious using the axios API: https://flaviocopes.com/axios/#the-axios-api
   defaultSearch = ( query = 'guitars') => {
-    this.state.loading = true;
+    this.state.loading = true;//sets state back to true after initial load of API data
     axios.get(`https://api.flickr.com/services/rest/?method=flickr.photos.search&api_key=${api}&tags=${query}&sort=relevance&per_page=24&format=json&nojsoncallback=1`)
       .then(response => 
         {
@@ -131,6 +136,7 @@ class App extends Component {
                   () => (this.state.loading) 
                     ? <p> Loading...</p> 
                     : <SearchResults data={this.state.searchPics} />} />
+                {/* if a non-existing route is used, then the Not Found component is triggered */}
                <Route component={NotFound} />
             </Switch>
         </div> 

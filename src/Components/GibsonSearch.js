@@ -9,7 +9,7 @@ const GibsonSearch = (props) => {
     const results = props.data;
 
     if (results.length > 0) {
-        
+
             gibsonPics = results.map(pic => 
                 <Gallery 
                     url={`https://farm${pic.farm}.staticflickr.com/${pic.server}/${pic.id}_${pic.secret}.jpg`}
@@ -26,7 +26,6 @@ const GibsonSearch = (props) => {
             <h2>Search Results</h2>
                     <ul>
                         {gibsonPics}
-                        {/* <NoResults /> */}
                     </ul>
             </div>
             );
