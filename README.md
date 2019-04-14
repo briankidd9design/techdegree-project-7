@@ -4,15 +4,13 @@ How to Setup App for Use:
 - Steps:
     1. Create a file named '.config.js' and save under src folder
     2. in the '.config.js', copy and paste the following code, and substitute with your own flickr API
+            const apiKey='You flickr API';
+            export default apiKey;
     3. enter into terminal: npm install
     4. enter into terminal: npm run build
     5. enter into the terminal: serve -s build
     6. copy the url in the terminal and paste it into the browser address bar
     7. press enter to run the application 
-  ```
-  const apiKey='You flickr API';
-  export default apiKey;
-  ```
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
