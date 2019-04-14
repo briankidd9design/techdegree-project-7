@@ -12,8 +12,7 @@ import SearchResults from './Components/SearchResults';
 import KieselSearch from './Components/KieselSearch';
 import FenderSearch from './Components/FenderSearch';
 import GibsonSearch from './Components/GibsonSearch';
-import NoResults from './Components/NoResults';
-
+import NotFound from './Components/NotFound';
 
 const api = apiKey;
 
@@ -29,6 +28,7 @@ class App extends Component {
       loading: true
     };
   } 
+
 // Helps load the JSON from the API
   componentDidMount() {
     this.defaultSearch();
@@ -36,8 +36,9 @@ class App extends Component {
     this.fenderSearch();
     this.gibsonSearch();
   }
-
+  
   defaultSearch = ( query = 'guitars') => {
+    this.state.loading = true;
     axios.get(`https://api.flickr.com/services/rest/?method=flickr.photos.search&api_key=${api}&tags=${query}&sort=relevance&per_page=24&format=json&nojsoncallback=1`)
       .then(response => 
         {
@@ -52,6 +53,7 @@ class App extends Component {
   }
 
   kieselSearch = (query = 'kieselguitars' ) => {
+    this.state.loading = true;
     axios.get(`https://api.flickr.com/services/rest/?method=flickr.photos.search&api_key=${api}&tags=${query}&sort=relevance&per_page=24&format=json&nojsoncallback=1`)
       .then(response => 
         {
@@ -66,6 +68,7 @@ class App extends Component {
   }
 
   fenderSearch = (query = 'fenderguitars' ) => {
+    this.state.loading = true;
     axios.get(`https://api.flickr.com/services/rest/?method=flickr.photos.search&api_key=${api}&tags=${query}&sort=relevance&per_page=24&format=json&nojsoncallback=1`)
       .then(response => 
         {
@@ -80,6 +83,7 @@ class App extends Component {
   }
 
   gibsonSearch = (query = 'gibsonguitars' ) => {
+    this.state.loading = true;
     axios.get(`https://api.flickr.com/services/rest/?method=flickr.photos.search&api_key=${api}&tags=${query}&sort=relevance&per_page=24&format=json&nojsoncallback=1`)
       .then(response => 
         {
@@ -127,7 +131,7 @@ class App extends Component {
                   () => (this.state.loading) 
                     ? <p> Loading...</p> 
                     : <SearchResults data={this.state.searchPics} />} />
-                    <Route component={NoResults} />
+               <Route component={NotFound} />
             </Switch>
         </div> 
         
