@@ -1,6 +1,7 @@
 {
   "name": "techdegree-project",
   "version": "0.1.0",
+  "main" : "index.js",
   "private": true,
   "dependencies": {
     "axios": "^0.18.0",
@@ -14,6 +15,9 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
+  },
+  "engines": {
+    "node": "10.15.3"
   },
   "eslintConfig": {
     "extends": "react-app"
